@@ -1,3 +1,11 @@
+#Version3.0
+#Changes: 
+# -> perfect square works now
+# -> prime list uses less memory
+# -> list doesn't need to be sorted to use remove duplicates
+
+
+
 #check if the number in a list is pair or even
 def check_list(x):
 	for i in x:
@@ -8,8 +16,10 @@ def check_list(x):
 
 
 
+
 #check if the number is prime
 def prime_numbers(l):
+	
 	for x in l:
 		divisor = x-1
 		multiple = [1, x] # every number is divided by 1 and itself
@@ -17,17 +27,20 @@ def prime_numbers(l):
 			if x % divisor == 0: #if the number divides by any other 
 				multiple.append(divisor)
 				divisor = divisor-1
+				break
 			else:
 				divisor = divisor-1
 		if multiple==[1,x]:
 			print "Number %r is prime" %x
 		else:
-			print "Number %r is not prime because it divides by %r" %(x, multiple)
-		return multiple
+			print "Number %r is not prime because it also divides by %r" %(x, multiple[2])
+	return multiple
 
 
-#removing duplicates in a list (only works if the list is sorted)
+
+#removing duplicates in a list
 def removing_duplicates(x):
+	x.sort()
 	lenght = len(x)
 	newlist = []
 	i=0
@@ -41,7 +54,9 @@ def removing_duplicates(x):
 				i=i+1 # if it repeats than skip the next one
 			j=j+1
 		i=i+1
+	print newlist
 	return newlist
+	
 
 
 #check if the number is a perfect square
@@ -57,4 +72,4 @@ def perfect_square(x):
 		i=i+2
 	print status
 
-perfect_square(225)
+
