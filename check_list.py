@@ -3,11 +3,12 @@
 # -> perfect square works now
 # -> prime list uses less memory
 # -> list doesn't need to be sorted to use remove duplicates
+# -> refactoring the code to make it more pythonic
 
 
 
 #check if the number in a list is pair or even
-def check_list(x):
+def check_parity(x):
 	for i in x:
 		if i%2==0: # if the rest of the division is 0 then it's pair
 			print "%r is pair" %i
@@ -61,15 +62,11 @@ def removing_duplicates(x):
 
 #check if the number is a perfect square
 def perfect_square(x):
-
-	i=1
 	impar = 0
 	status = "Number %r is not perfect square." %x
-	while i<x:
-		impar = i + impar
-		if impar==x:
+	for i in range(1,x,2):
+		impar += i
+		if impar == x:
 			status= "Number %r is a perfect square." %x
-		i=i+2
 	print status
-
 
